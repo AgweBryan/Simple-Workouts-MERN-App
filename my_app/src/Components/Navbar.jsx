@@ -2,11 +2,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import "../App.css";
 import { authActions } from "../store/slices/authSlice";
+import { workoutsActions } from "../store/slices/workoutSlice";
 
 const Navbar = () => {
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
-
+  const handleClick = () => {
+    dispatch(authActions.logout());
+    dispatch(workoutsActions.updateWorkouts([]));
+  };
   return (
     <header className="bg-white">
       <div className="wrapper">
@@ -19,7 +23,7 @@ const Navbar = () => {
               <span>{user.email}</span>
               <button
                 className="bg-green-500 hover:bg-green-700 cursor-pointer rounded text-white py-1 px-2 "
-                onClick={() => dispatch(authActions.logout())}
+                onClick={handleClick}
               >
                 Log out
               </button>
