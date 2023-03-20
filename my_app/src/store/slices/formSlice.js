@@ -8,6 +8,7 @@ const formSlice = createSlice({
     reps: "",
     isEditing: false,
     workoutId: "",
+    error: "",
   },
   reducers: {
     editWorkout(state, action) {
@@ -31,6 +32,9 @@ const formSlice = createSlice({
     },
     setReps(state, action) {
       state.reps = action.payload;
+    },
+    setError(state, action) {
+      state.error = action.payload;
     },
   },
 });

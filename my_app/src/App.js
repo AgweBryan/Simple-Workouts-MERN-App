@@ -9,6 +9,7 @@ import { authActions } from "./store/slices/authSlice";
 function App() {
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
