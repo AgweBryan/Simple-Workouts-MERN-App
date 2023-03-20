@@ -9,10 +9,13 @@ const Home = () => {
   const workouts = useSelector((state) => state.workouts.workouts);
   const isLoading = useSelector((state) => state.workouts.isLoading);
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
 
   useEffect(() => {
-    dispatch(fetchAllWorkouts());
-  }, [dispatch]);
+    if (user) {
+      dispatch(fetchAllWorkouts(user.token));
+    }
+  }, [dispatch, user]);
 
   return (
     <div className="container mx-auto">

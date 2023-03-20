@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteWorkout } from "../store/thunks/workoutThunk";
 import { BsTrash } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
@@ -6,9 +6,13 @@ import { formActions } from "../store/slices/formSlice";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 const WorkoutDetails = ({ workout }) => {
+  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
   const handleDelete = () => {
-    dispatch(deleteWorkout(workout._id));
+    if (!user) {
+      console.log("You are no logged in");
+    }
+    dispatch(deleteWorkout(workout._id, user.token));
   };
   const handleEdit = () => {
     dispatch(formActions.setTitle(workout.title));

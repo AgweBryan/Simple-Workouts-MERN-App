@@ -6,15 +6,22 @@ const WorkoutForm = () => {
   const { title, load, reps, isEditing, workoutId } = useSelector(
     (state) => state.form
   );
+  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!user) {
+      console.log("YOu are not logged in");
+      return;
+    }
+
     const workout = { title, load, reps };
     if (isEditing) {
-      dispatch(sendEditWorkout(workout, workoutId));
+      dispatch(sendEditWorkout(workout, workoutId, user.token));
     } else {
-      dispatch(sendNewWorkout(JSON.stringify(workout)));
+      dispatch(sendNewWorkout(JSON.stringify(workout), user.token));
     }
 
     dispatch(formActions.setTitle(""));
