@@ -3,10 +3,10 @@ const router = express.Router();
 
 const userController = require("../controllers/userController");
 
-// Login route
+// http://localhost/api/user/login - POST
 router.post("/login", userController.loginUser);
 
-// Signup route
+// http://localhost/api/user/signup - POST
 router.post("/signup", userController.signupUser);
 
 module.exports = router;

@@ -6,6 +6,7 @@ const userRoutes = require("./routes/user");
 
 const app = express();
 
+// parse request body
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -13,6 +14,7 @@ app.use((req, res, next) => {
   next();
 });
 
+// Routes
 app.use("/api/workouts", workoutRoutes);
 
 app.use("/api/user", userRoutes);
