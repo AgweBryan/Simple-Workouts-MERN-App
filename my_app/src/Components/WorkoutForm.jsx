@@ -1,19 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
 import { formActions } from "../store/slices/formSlice";
 import { sendEditWorkout, sendNewWorkout } from "../store/thunks/workoutThunk";
+import Error from "./Error";
 
 const WorkoutForm = () => {
-  const { title, load, reps, isEditing, workoutId } = useSelector(
+  const { title, load, reps, isEditing, workoutId, error } = useSelector(
     (state) => state.form
   );
   const user = useSelector((state) => state.auth.user);
+
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!user) {
-      console.log("YOu are not logged in");
+      dispatch(formActions.setError("You have to be logged in."));
       return;
     }
 
@@ -66,6 +68,7 @@ const WorkoutForm = () => {
           Add Workout
         </button>
       )}
+      {error && <Error error={error} />}
     </form>
   );
 };
