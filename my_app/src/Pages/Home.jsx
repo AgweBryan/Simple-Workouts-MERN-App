@@ -19,8 +19,8 @@ const Home = () => {
 
   return (
     <div className="container mx-auto">
-      <div className="grid grid-cols-3/1 gap-6">
-        <div className="grid grid-cols-3 gap-2">
+      <div className="md:grid md:grid-cols-3/1 md:gap-6">
+        <div className="flex flex-col md:flex-row gap-2">
           {isLoading && (
             <div className="bg-white rounded p-5 relative shadow-sm flex items-center justify-center">
               <h1>Loading...</h1>

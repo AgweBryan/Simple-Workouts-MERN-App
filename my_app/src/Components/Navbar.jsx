@@ -13,16 +13,16 @@ const Navbar = () => {
   };
   return (
     <header className="bg-white">
-      <div className="wrapper">
+      <div className="wrapper flex flex-col md:flex-row">
         <Link to="" className="text-gray-900 text-xl font-bold">
           <h1>Workout Buddy</h1>
         </Link>
         <nav className="flex items-center">
           {user && (
-            <div>
-              <span>{user.email}</span>
+            <div className="sm:space-x-2 text-center sm:text-start">
+              <span className="text-slate-600 font-semibold">{user.email}</span>
               <button
-                className="bg-green-500 hover:bg-green-700 cursor-pointer rounded text-white py-1 px-2 "
+                className="border-2 border-green-500 hover:bg-green-700 hover:text-white cursor-pointer rounded text-green-500 py-1 px-2"
                 onClick={handleClick}
               >
                 Log out

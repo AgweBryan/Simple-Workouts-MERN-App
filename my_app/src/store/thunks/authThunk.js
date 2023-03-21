@@ -13,6 +13,7 @@ export const signupUser = (user) => async (dispatch) => {
     // save user to local storage
     localStorage.setItem("user", JSON.stringify(json));
     dispatch(authActions.setUser(json));
+    dispatch(authActions.setIsLoading(false));
     return;
   }
   dispatch(authActions.setError(json.error));
@@ -36,6 +37,7 @@ export const loginUser = (cred) => async (dispatch) => {
     // save user to local storage
     localStorage.setItem("user", JSON.stringify(json));
     dispatch(authActions.setUser(json));
+    dispatch(authActions.setIsLoading(false));
     return;
   }
   dispatch(authActions.setError(json.error));
