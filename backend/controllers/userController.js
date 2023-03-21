@@ -18,8 +18,6 @@ const loginUser = async (req, res) => {
   } catch (e) {
     res.status(400).json({ error: e.message });
   }
-
-  res.json({ message: "Login user" });
 };
 
 // Signup user

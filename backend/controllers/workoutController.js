@@ -34,7 +34,7 @@ const createWorkout = async (req, res) => {
     const workout = await Workout.create({ title, load, reps, user_id });
     res.status(200).json(workout);
   } catch (e) {
-    res.status(400).json({ error: e.message });
+    res.status(400).json({ error: "All fields are required" });
   }
 };
 

@@ -1,4 +1,5 @@
 import { authActions } from "../slices/authSlice";
+import { formActions } from "../slices/formSlice";
 
 export const signupUser = (user) => async (dispatch) => {
   dispatch(authActions.setIsLoading(true));
@@ -13,10 +14,14 @@ export const signupUser = (user) => async (dispatch) => {
     // save user to local storage
     localStorage.setItem("user", JSON.stringify(json));
     dispatch(authActions.setUser(json));
-  } else {
-    console.log(json);
+    return;
   }
+  dispatch(authActions.setError(json.error));
   dispatch(authActions.setIsLoading(false));
+  setTimeout(() => {
+    dispatch(authActions.setError(""));
+  }, 3000);
+  clearTimeout();
 };
 
 export const loginUser = (cred) => async (dispatch) => {
@@ -32,8 +37,12 @@ export const loginUser = (cred) => async (dispatch) => {
     // save user to local storage
     localStorage.setItem("user", JSON.stringify(json));
     dispatch(authActions.setUser(json));
-  } else {
-    console.log(json);
+    return;
   }
+  dispatch(authActions.setError(json.error));
   dispatch(authActions.setIsLoading(false));
+  setTimeout(() => {
+    dispatch(authActions.setError(""));
+  }, 3000);
+  clearTimeout();
 };

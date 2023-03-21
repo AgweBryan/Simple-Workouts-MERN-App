@@ -40,6 +40,11 @@ export const sendNewWorkout = (workout, token) => async (dispatch) => {
 
   dispatch(formActions.setError(data.error));
   dispatch(workoutsActions.setIsLoading(false));
+
+  setTimeout(() => {
+    dispatch(formActions.setError(""));
+  }, 3000);
+  clearTimeout();
 };
 
 // Delete a workout
@@ -76,4 +81,9 @@ export const sendEditWorkout =
 
     dispatch(formActions.setError(data.error));
     dispatch(workoutsActions.setIsLoading(false));
+
+    setTimeout(() => {
+      dispatch(formActions.setError(""));
+    }, 3000);
+    clearTimeout();
   };
