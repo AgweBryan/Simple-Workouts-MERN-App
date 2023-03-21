@@ -1,5 +1,5 @@
 {
-  "proxy": "https://workout-buddy-rn9k.onrender.com",
+  "proxy": "http://localhost:4000",
   "name": "my_app",
   "version": "0.1.0",
   "private": true,
