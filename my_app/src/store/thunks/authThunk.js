@@ -1,5 +1,4 @@
 import { authActions } from "../slices/authSlice";
-import { formActions } from "../slices/formSlice";
 
 export const signupUser = (user) => async (dispatch) => {
   dispatch(authActions.setIsLoading(true));
