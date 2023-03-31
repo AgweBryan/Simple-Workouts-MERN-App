@@ -1,6 +1,8 @@
 import { formActions } from "../slices/formSlice";
 import { workoutsActions } from "../slices/workoutSlice";
 
+const baseUrl = "https://workout-buddy-rn9k.onrender.com";
+
 const getAllWorkouts = async (token, dispatch) => {
   const res = await fetch("/api/workouts", {
     headers: {
@@ -21,7 +23,7 @@ export const fetchAllWorkouts = (token) => async (dispatch) => {
 // Create a workout
 export const sendNewWorkout = (workout, token) => async (dispatch) => {
   dispatch(workoutsActions.setIsLoading(true));
-  const res = await fetch("/api/workouts", {
+  const res = await fetch(baseUrl + "/api/workouts", {
     method: "POST",
     body: workout,
     headers: {
@@ -49,7 +51,7 @@ export const sendNewWorkout = (workout, token) => async (dispatch) => {
 
 // Delete a workout
 export const deleteWorkout = (workoutId, token) => async (dispatch) => {
-  await fetch("/api/workouts/" + workoutId, {
+  await fetch(baseUrl + "/api/workouts/" + workoutId, {
     method: "DELETE",
     headers: {
       authorization: `Bearer ${token}`,
@@ -62,7 +64,7 @@ export const deleteWorkout = (workoutId, token) => async (dispatch) => {
 // Edit a workout
 export const sendEditWorkout =
   (workout, workoutId, token) => async (dispatch) => {
-    const res = await fetch("/api/workouts/" + workoutId, {
+    const res = await fetch(baseUrl + "/api/workouts/" + workoutId, {
       method: "PATCH",
       body: JSON.stringify(workout),
       headers: {

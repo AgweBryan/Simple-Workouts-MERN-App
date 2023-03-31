@@ -1,9 +1,9 @@
 import { authActions } from "../slices/authSlice";
-
+const baseUrl = "https://workout-buddy-rn9k.onrender.com";
 export const signupUser = (user) => async (dispatch) => {
   dispatch(authActions.setIsLoading(true));
 
-  const response = await fetch("/api/user/signup", {
+  const response = await fetch(baseUrl + "/api/user/signup", {
     method: "POST",
     body: JSON.stringify(user),
     headers: { "Content-Type": "application/json" },
@@ -27,7 +27,7 @@ export const signupUser = (user) => async (dispatch) => {
 export const loginUser = (cred) => async (dispatch) => {
   dispatch(authActions.setIsLoading(true));
 
-  const response = await fetch("/api/user/login", {
+  const response = await fetch(baseUrl + "/api/user/login", {
     method: "POST",
     body: JSON.stringify(cred),
     headers: { "Content-Type": "application/json" },
