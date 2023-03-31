@@ -4,7 +4,7 @@ import { workoutsActions } from "../slices/workoutSlice";
 const baseUrl = "https://workout-buddy-rn9k.onrender.com";
 
 const getAllWorkouts = async (token, dispatch) => {
-  const res = await fetch("/api/workouts", {
+  const res = await fetch(baseUrl+"/api/workouts", {
     headers: {
       authorization: `Bearer ${token}`,
     },
